@@ -1,6 +1,5 @@
 'use client'
 
-import { use } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ChevronLeft, Play, Trash2, Calendar, MapPin, Download } from 'lucide-react'
@@ -9,8 +8,8 @@ import { useTripStore } from '@/stores/tripStore'
 import { formatShortDate } from '@/lib/utils/dateUtils'
 import { CATEGORY_ICONS } from '@/types'
 
-export default function TripPage({ params }: { params: Promise<{ tripId: string }> }) {
-  const { tripId } = use(params)
+export default function TripPage({ params }: { params: { tripId: string } }) {
+  const { tripId } = params
   const trip = useTrip(tripId)
   const router = useRouter()
   const { deleteTrip } = useTripStore()

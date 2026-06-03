@@ -1,11 +1,10 @@
 'use client'
 
-import { use } from 'react'
 import { useTrip } from '@/hooks/useTrip'
 import { NavigateScreen } from '@/components/navigate/NavigateScreen'
 
-export default function NavigatePage({ params }: { params: Promise<{ tripId: string }> }) {
-  const { tripId } = use(params)
+export default function NavigatePage({ params }: { params: { tripId: string } }) {
+  const { tripId } = params
   const trip = useTrip(tripId)
 
   if (!trip) {

@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronLeft, Plus } from 'lucide-react'
 import { useTrip } from '@/hooks/useTrip'
@@ -12,8 +12,8 @@ import { formatDate } from '@/lib/utils/dateUtils'
 import { combineDateAndTime } from '@/lib/utils/dateUtils'
 import type { Activity } from '@/types'
 
-export default function DayPage({ params }: { params: Promise<{ tripId: string; date: string }> }) {
-  const { tripId, date } = use(params)
+export default function DayPage({ params }: { params: { tripId: string; date: string } }) {
+  const { tripId, date } = params
   const trip = useTrip(tripId)
   const { addActivity, updateActivity, deleteActivity } = useTripStore()
   const [addOpen, setAddOpen] = useState(false)
